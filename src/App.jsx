@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
 
@@ -14,6 +14,28 @@ const App = () => {
   function teste() {
     console.log("Testando");
   }
+
+  function anyTime(){
+    console.log("Todas as Vezes");
+  }
+  function oneTime(){
+    console.log("Apenas uma Vez");
+  }
+  function onlyStateChange(){
+    console.log("apenas quando uma dependencia mudar");
+  }
+
+  useEffect(() => {
+    anyTime();
+  })
+
+  useEffect(() => {
+    oneTime();
+  }, []);
+
+  useEffect(() => {
+    onlyStateChange();
+  }, [vetor]);
 
   teste();
 
@@ -53,7 +75,6 @@ const App = () => {
         <button onClick={() => setObj({...obj, horaDeDormir: 23, idade: 30}) }>
           Hora de Dormir
         </button>
-
       </p>
     </div>
     
